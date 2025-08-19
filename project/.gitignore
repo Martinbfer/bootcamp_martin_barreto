@@ -1,0 +1,21 @@
+# Ignore cache
+__pycache__/
+*.pyc
+
+# Ignore env variables
+.env
+.env.*
+.envrc
+
+# Ignore virtual env
+/venv/
+/env/
+/.venv/
+
+# Ignore data and checkpoints
+/data/
+/notebooks/.ipynb_checkpoints/
+
+# Ignore system data
+.DS_Store
+.vscode/
