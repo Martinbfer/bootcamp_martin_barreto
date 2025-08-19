@@ -1,0 +1,29 @@
+[
+  {
+    "category":"A",
+    "value_count":4,
+    "value_mean":11.5,
+    "value_std":1.2909944487,
+    "value_min":10,
+    "value_median":11.5,
+    "value_max":13
+  },
+  {
+    "category":"B",
+    "value_count":3,
+    "value_mean":15.6666666667,
+    "value_std":2.0816659995,
+    "value_min":14,
+    "value_median":15.0,
+    "value_max":18
+  },
+  {
+    "category":"C",
+    "value_count":3,
+    "value_mean":27.6666666667,
+    "value_std":2.5166114784,
+    "value_min":25,
+    "value_median":28.0,
+    "value_max":30
+  }
+]
