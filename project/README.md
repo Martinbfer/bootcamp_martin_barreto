@@ -40,3 +40,40 @@ Goal 8 → Feature Engineering
 Goal 9 → Modeling
 Goal 10 → Evaluation & Risk Comunnication
 Goal 11 → Results Reporting, Delivery Design & Stakeholder Communication
+
+
+- Data Storage:
+
+The project's folder structure for storing data:
+
+data/raw/ contains the raw datasets exactly as downloaded from the source (Coca-Cola stock prices in CSV, financial statements in JSON).
+
+data/processed/ contains datasets prepared for analysis (daily returns saved in Parquet format).
+
+Raw data is always preserved in CSV/JSON, while processed data is stored in Parquet.
+
+All data paths are managed in a reproducible way. By default, the code reads and writes to the data/ folder at the project root. 
+
+- Data preprocessing
+
+Preprocessing was applied to the Coca-Cola dataset to prepare it for modeling.  
+Steps included:
+
+- Dropping rows with missing dates.  
+- Converting price and return columns to numeric types.  
+- Forward-filling missing values to maintain continuity in time series.  
+- Adding log returns for use in financial models.  
+
+The preprocessing functions are stored in `src/cleaning.py` for reusability.  
+A demonstration of the pipeline is provided in `notebooks/data_preprocessing.ipynb`.  
+The cleaned dataset is saved in `data/processed/ko_cleaned.parquet`.  
+
+Assumptions:
+Missing Dates: Rows with missing dates were dropped to maintain consistent time series continuity. This ensures calculations like returns are accurate.
+
+Numeric Conversion: Columns close and daily_ret were explicitly converted to numeric to avoid issues with string or object types.
+
+Forward Fill: Any missing values in close or daily_ret were filled using forward fill (propagating the last valid value). This prevents breaks in the time series caused by isolated gaps.
+
+Log Returns: A new column log_ret was added to capture log returns.
+

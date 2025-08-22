@@ -6,14 +6,14 @@ import numpy as np
 def load_data(path: str | Path) -> pd.DataFrame:
     path = Path(path)
     if not path.exists():
-        raise FileNotFoundError(f"No se encontró el archivo: {path}")
+        raise FileNotFoundError(f"File not found: {path}")
     return pd.read_csv(path)
 
 def get_summary_stats(df: pd.DataFrame, by: str | None = None) -> pd.DataFrame:
     if by is None:
         return df.describe().T
     if by not in df.columns:
-        raise KeyError(f"La columna '{by}' no está en el DataFrame.")
+        raise KeyError(f"Column '{by}' not in DataFrame.")
     numeric_cols = df.select_dtypes(include="number").columns
     agg_map = {col: ["count", "mean", "std", "min", "median", "max"] for col in numeric_cols}
     grouped = df.groupby(by, dropna=False).agg(agg_map)

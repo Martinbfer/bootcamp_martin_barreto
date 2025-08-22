@@ -3,13 +3,11 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-# Carga variables desde .env ubicado en la raíz del proyecto
 load_dotenv()
 
 def get_key(name: str, default: Optional[str] = None) -> Optional[str]:
     return os.getenv(name, default)
 
-# Raíz del proyecto (donde estás ejecutando)
 PROJECT_ROOT = Path.cwd()
 DATA_DIR = PROJECT_ROOT / "data"
 
