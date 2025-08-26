@@ -93,3 +93,13 @@ Outliers outside 1.5×IQR represent anomalies rather than the “typical” retu
 Data quality is reliable, and extreme points are not caused by reporting errors.
 
 In financial data, such “outliers” often correspond to real market events (crashes/spikes). Removing them stabilizes the dataset but the risk is underestimating true risk. 
+
+- Stage09: Feature engineering
+
+Feature 1: Rolling Volatility (21 days)
+
+This feature measures the short-term risk of the asset, calculated as the standard deviation of daily returns over the past 21 trading days (about one month). By using rolling volatility, the model can capture time-varying risk levels instead of assuming that volatility is constant. This is important in financial markets because periods of high volatility often coincide with crises, uncertainty, or structural changes in returns.
+
+Feature 2: Cumulative Return
+
+This feature represents the total growth of an investment over time if an investor had put $1 at the start date. It captures long-term performance trends and helps contextualize whether short-term movements (daily or monthly returns) are happening in a generally positive or negative growth environment. This can be especially useful for detecting regime shifts (e.g., moving from a bull to a bear market).
