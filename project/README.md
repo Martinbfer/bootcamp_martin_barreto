@@ -77,3 +77,19 @@ Forward Fill: Any missing values in close or daily_ret were filled using forward
 
 Log Returns: A new column log_ret was added to capture log returns.
 
+- Outlier Handling (Stage 7)
+
+I applied the IQR method (k=1.5) on daily_ret to flag outliers.
+
+Cutoffs: –0.0232 (Q1–1.5×IQR), +0.0238 (Q3+1.5×IQR)
+
+
+Impact: mean shifted slightly closer to the median (0.00034 → 0.00047), and std dropped from 0.0129 to 0.0086, showing that extreme returns were driving most of the variance.
+
+Assumptions ans risk:
+
+Outliers outside 1.5×IQR represent anomalies rather than the “typical” return process.
+
+Data quality is reliable, and extreme points are not caused by reporting errors.
+
+In financial data, such “outliers” often correspond to real market events (crashes/spikes). Removing them stabilizes the dataset but the risk is underestimating true risk. 
